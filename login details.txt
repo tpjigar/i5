@@ -1,0 +1,7 @@
+admin@example.com
+password: 1234
+-----------
+student : maria@example.com
+Teacher : teacher1@example.com
+parents : parent1@example.com parent
+password : 1234
