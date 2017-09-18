@@ -4,9 +4,7 @@ if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
-    
-    
-	function __construct()
+    function __construct()
 	{
 		parent::__construct();
 		$this->load->database();
@@ -195,6 +193,55 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
     
+    /****MANAGE COUNTRY*****/
+    function country($param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+
+        $this->db->order_by("country_name","ASC");
+        $page_data['countries']   = $this->db->get('country')->result_array();
+        $page_data['page_name']  = 'country';
+        $page_data['page_title'] = get_phrase('manage_country');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    /****MANAGE STATE*****/
+    function state($param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+
+        $this->db->order_by("state_name","ASC");
+        if(is_numeric($param1))
+            $page_data['state']   = $this->db->get_where('state',array('country_id'=>$param1))->result_array();
+        else
+            $page_data['state']   = $this->db->get('state')->result_array();
+
+        $page_data['country']   = $this->db->get_where('country',array('country_id'=>$param1))->row()->country_name;      
+        $page_data['page_name']  = 'state';
+        $page_data['page_title'] = get_phrase('manage_state');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    /****MANAGE CITY*****/
+    function city($param1 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+
+         $this->db->order_by("city_name","ASC");
+        if(is_numeric($param1))
+            $page_data['city']   = $this->db->get_where('city',array('state_id'=>$param1))->result_array();
+        else
+            $page_data['city']   = $this->db->get('city')->result_array();
+        
+        $page_data['state']   = $this->db->get_where('state',array('state_id'=>$param1))->row()->state_name; 
+        $page_data['page_name']  = 'city';
+        $page_data['page_title'] = get_phrase('manage_city');
+        $this->load->view('backend/index', $page_data);
+    }
+
     /****MANAGE FAQ's*****/
     function faq($param1 = '', $param2 = '', $param3 = '')
     {
@@ -543,6 +590,56 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
     
+    /******MANAGE EMAIL TEMPLATE***/
+    function email_template($param1 = '', $param2 = '', $param3 = '')
+    {
+         if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'create') {
+            $data['email_type']        = $this->input->post('email_type');
+            $data['email_title']       = $this->input->post('email_title');
+            $data['email_subject']    = $this->input->post('email_subject');
+            $data['email_body_text']       = $this->input->post('email_body_text');
+            $data['email_body_html']     = $this->input->post('email_body_html');
+            $data['is_visible']     = $this->input->post('is_visible');
+            $this->db->insert('email_template', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url() . 'index.php?admin/email_template/', 'refresh');
+        }
+        if ($param1 == 'do_update') {
+            $data['email_type']        = $this->input->post('email_type');
+            $data['email_title']       = $this->input->post('email_title');
+            $data['email_subject']    = $this->input->post('email_subject');
+            $data['email_body_text']       = $this->input->post('email_body_text');
+            $data['email_body_html']     = $this->input->post('email_body_html');
+            $data['is_visible']     = $this->input->post('is_visible');
+            
+            $this->db->where('email_template_id', $param2);
+            $this->db->update('email_template', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/email_template/', 'refresh');
+        } else if ($param1 == 'personal_profile') {
+            $page_data['personal_profile']   = true;
+            $page_data['current_email_template_id'] = $param2;
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('email_template', array('email_template_id' => $param2
+            ))->result_array();
+        }
+        if ($param1 == 'delete') {
+            $this->db->where('email_template_id', $param2);
+            $this->db->delete('email_template');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/email_template/', 'refresh');
+        }
+        
+        $page_data['page_name']  = 'email_template';
+        $page_data['page_title'] = get_phrase('manage_email_template');
+        $this->load->view('backend/index', $page_data);
+    }
+
+
     /******MANAGE OWN PROFILE AND CHANGE PASSWORD***/
     function manage_profile($param1 = '', $param2 = '', $param3 = '')
     {
@@ -586,4 +683,89 @@ class Admin extends CI_Controller
     }
     
     
+    /******MANAGE PAGES***/
+    function pages($param1 = '', $param2 = '', $param3 = '')
+    {
+         if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'create') {
+            $data['pages_name']        = $this->input->post('pages_name');
+            $data['content']       = $this->input->post('content');
+            $data['is_visible']     = $this->input->post('is_visible');
+            $this->db->insert('pages', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url() . 'index.php?admin/pages/', 'refresh');
+        }
+        if ($param1 == 'do_update') {
+            $data['pages_name']        = $this->input->post('pages_name');
+            $data['content']       = $this->input->post('content');
+            $data['is_visible']     = $this->input->post('is_visible');
+            
+            $this->db->where('pages_id', $param2);
+            $this->db->update('pages', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/pages/', 'refresh');
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('pages', array('pages_id' => $param2
+            ))->result_array();
+        }
+        if ($param1 == 'delete') {
+            $this->db->where('pages_id', $param2);
+            $this->db->delete('pages');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/pages/', 'refresh');
+        }
+        
+        $page_data['page_name']  = 'pages';
+        $page_data['page_title'] = get_phrase('manage_pages');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    /******MANAGE SEO META***/
+    function seo_meta($param1 = '', $param2 = '', $param3 = '')
+    {
+         if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'create') {
+            $data['page_name']        = $this->input->post('page_name');
+            $data['seo_title']       = $this->input->post('seo_title');
+            $data['seo_keyword']       = $this->input->post('seo_keyword');
+            $data['seo_desc']       = $this->input->post('seo_desc');
+            $this->db->insert('seo_meta', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url() . 'index.php?admin/seo_meta/', 'refresh');
+        }
+        if ($param1 == 'do_update') {
+            $data['page_name']        = $this->input->post('page_name');
+            $data['seo_title']       = $this->input->post('seo_title');
+            $data['seo_keyword']       = $this->input->post('seo_keyword');
+            $data['seo_desc']       = $this->input->post('seo_desc');
+            
+            $this->db->where('seo_meta_id', $param2);
+            $this->db->update('seo_meta', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/seo_meta/', 'refresh');
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('seo_meta', array('seo_meta_id' => $param2
+            ))->result_array();
+        }
+        if ($param1 == 'delete') {
+            $this->db->where('seo_meta_id', $param2);
+            $this->db->delete('seo_meta');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/seo_meta/', 'refresh');
+        }
+        
+        $page_data['page_name']  = 'seo_meta';
+        $page_data['page_title'] = get_phrase('manage_seo');
+        $this->load->view('backend/index', $page_data);
+    }
+
+
+
+
 }

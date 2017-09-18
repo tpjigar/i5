@@ -1,13 +1,5 @@
 <?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
-/*	
- *	@author : Joyonto Roy
- *	date	: 4 August, 2014
- *	Ekattor School  Management System
- *	http://codecanyon.net/user/Creativeitem
- */
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Teacher extends CI_Controller
 {

@@ -1,14 +1,5 @@
 <?php
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
-
-/*	
- *	@author : Joyonto Roy
- *	date	: 20 August, 2013
- *	University Of Dhaka, Bangladesh
- *	Ekattor School & College Management System
- *	http://codecanyon.net/user/joyontaroy
- */
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Student extends CI_Controller
 {

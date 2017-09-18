@@ -28,7 +28,7 @@
             
                 <div class="tile-stats tile-red">
                     <div class="icon"><i class="fa fa-group"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo 10; //$this->db->count_all('student');?>" 
+                    <div class="num" data-start="0" data-end="<?php echo 25;//$this->db->count_all('student');?>" 
                     		data-postfix="" data-duration="1500" data-delay="0">0</div>
                     
                     <h3><?php echo get_phrase('voucher');?></h3>
@@ -36,23 +36,12 @@
                 </div>
                 
             </div>
-            <div class="col-md-12">
             
-                <div class="tile-stats tile-green">
-                    <div class="icon"><i class="entypo-users"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo 5;?>" 
-                    		data-postfix="" data-duration="800" data-delay="0">0</div>
-                    
-                    <h3><?php echo get_phrase('customer');?></h3>
-                   <p>Total customer</p>
-                </div>
-                
-            </div>
             <div class="col-md-12">
             
                 <div class="tile-stats tile-aqua">
                     <div class="icon"><i class="entypo-user"></i></div>
-                    <div class="num" data-start="0" data-end="<?php echo 15; //$this->db->count_all('parent');?>" 
+                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('category');?>" 
                     		data-postfix="" data-duration="500" data-delay="0">0</div>
                     
                     <h3><?php echo get_phrase('category');?></h3>
@@ -60,6 +49,29 @@
                 </div>
                 
             </div>
+            <div class="col-md-12">
+                <div class="tile-stats tile-blue">
+                    <div class="icon"><i class="entypo-chart-bar"></i></div>
+                    <div class="num" data-start="0" data-end="<?php echo $this->db->count_all('sub_category');?>" 
+                            data-postfix="" data-duration="500" data-delay="0">0</div>
+                    
+                    <h3><?php echo get_phrase('sub_category');?></h3>
+                   <p>Total subcategory</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+            
+                <div class="tile-stats tile-green">
+                    <div class="icon"><i class="entypo-users"></i></div>
+                    <div class="num" data-start="0" data-end="<?php echo 5;?>" 
+                            data-postfix="" data-duration="800" data-delay="0">0</div>
+                    
+                    <h3><?php echo get_phrase('customer');?></h3>
+                   <p>Total customer</p>
+                </div>
+                
+            </div>
+
             
     	</div>
     </div>

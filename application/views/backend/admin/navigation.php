@@ -46,16 +46,31 @@
             </a>
         </li>
 
+        <li class="<?php if ($page_name == 'category') echo 'active'; ?> ">
+            <a href="<?php echo base_url(); ?>index.php?admin/category">
+                <i class="entypo-users"></i>
+                <span><?php echo get_phrase('category'); ?></span>
+            </a>
+        </li>
+
+        <li class="<?php if ($page_name == 'sub_category') echo 'active'; ?> ">
+            <a href="<?php echo base_url(); ?>index.php?admin/sub_category">
+                <i class="entypo-users"></i>
+                <span><?php echo get_phrase('sub_category'); ?></span>
+            </a>
+        </li>
+
+
         
        <li class="<?php
-        if ($page_name == 'category' OR $page_name == 'sub_category' OR $page_name == 'faq' OR $page_name == 'pages' OR $page_name == 'seo') 
+        if ( $page_name == 'faq' || $page_name == 'pages' || $page_name == 'seo' || $page_name == 'country' || $page_name == 'email_template' || $page_name == 'seo_meta') 
             echo 'opened active'; ?> ">
             <a href="#">
                 <i class="entypo-flow-tree"></i>
                 <span><?php echo get_phrase('contents'); ?></span>
             </a>
             <ul>
-                <li class="<?php if ($page_name == 'category') echo 'active'; ?> ">
+               <!--  <li class="<?php if ($page_name == 'category') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/category">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('category'); ?></span>
                     </a>
@@ -64,20 +79,31 @@
                     <a href="<?php echo base_url(); ?>index.php?admin/sub_category">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('sub_category'); ?></span>
                     </a>
-                </li>
+                </li> -->
                 <li class="<?php if ($page_name == 'faq') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/faq">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('faq'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'pages') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/pages">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('pages'); ?></span>
+                <li class="<?php if ($page_name == 'country') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/country">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('country'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'seo') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/seo">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('seo'); ?></span>
+                <li class="<?php if ($page_name == 'email_template') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/email_template">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('email_template'); ?></span>
+                    </a>
+                </li>
+
+                <li class="<?php if ($page_name == 'pages') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/pages">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('dynamic_Pages'); ?></span>
+                    </a>
+                </li>
+                <li class="<?php if ($page_name == 'seo_meta') echo 'active'; ?> ">
+                    <a href="<?php echo base_url(); ?>index.php?admin/seo_meta">
+                        <span><i class="entypo-dot"></i> <?php echo get_phrase('dynamic_SEO'); ?></span>
                     </a>
                 </li>
             </ul>
@@ -97,22 +123,17 @@
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('voucher'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'section') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/voucher">
-                        <span><i class="entypo-dot"></i> <?php echo get_phrase('voucher'); ?></span>
-                    </a>
-                </li>
             </ul>
         </li>
 
         
         <!-- PAYMENT -->
-        <li class="<?php if ($page_name == 'invoice') echo 'active'; ?> ">
+        <!-- <li class="<?php if ($page_name == 'invoice') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/invoice">
                 <i class="entypo-credit-card"></i>
                 <span><?php echo get_phrase('payment'); ?></span>
             </a>
-        </li>
+        </li> -->
 
         
         <!-- NOTICEBOARD -->
@@ -124,12 +145,12 @@
         </li>
 
         <!-- MESSAGE -->
-        <li class="<?php if ($page_name == 'message') echo 'active'; ?> ">
+        <!-- <li class="<?php if ($page_name == 'message') echo 'active'; ?> ">
             <a href="<?php echo base_url(); ?>index.php?admin/message">
                 <i class="entypo-mail"></i>
                 <span><?php echo get_phrase('message'); ?></span>
             </a>
-        </li>
+        </li> -->
 
         <!-- SETTINGS -->
         <li class="<?php
@@ -148,11 +169,11 @@
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('general_settings'); ?></span>
                     </a>
                 </li>
-                <li class="<?php if ($page_name == 'sms_settings') echo 'active'; ?> ">
+                <!-- <li class="<?php if ($page_name == 'sms_settings') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/sms_settings">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('sms_settings'); ?></span>
                     </a>
-                </li>
+                </li> -->
                 <li class="<?php if ($page_name == 'manage_language') echo 'active'; ?> ">
                     <a href="<?php echo base_url(); ?>index.php?admin/manage_language">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('language_settings'); ?></span>
