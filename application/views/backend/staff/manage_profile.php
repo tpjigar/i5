@@ -19,7 +19,7 @@
 					<?php 
                     foreach($edit_data as $row):
                         ?>
-                        <?php echo form_open(base_url() . 'index.php?teacher/manage_profile/update_profile_info' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top' , 'enctype' => 'multipart/form-data'));?>
+                        <?php echo form_open(base_url() . 'index.php?staff/manage_profile/update_profile_info' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top' , 'enctype' => 'multipart/form-data'));?>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
                                 <div class="col-sm-5">
@@ -38,7 +38,7 @@
                                 <div class="col-sm-5">
                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail" style="width: 100px; height: 100px;" data-trigger="fileinput">
-                                            <img src="<?php echo $this->crud_model->get_image_url('teacher' , $row['teacher_id']);?>" alt="...">
+                                            <img src="<?php echo $this->crud_model->get_image_url('staff' , $row['staff_id']);?>" alt="...">
                                         </div>
                                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px"></div>
                                         <div>
@@ -92,7 +92,7 @@
 					<?php 
                     foreach($edit_data as $row):
                         ?>
-                        <?php echo form_open('teacher/manage_profile/change_password' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+                        <?php echo form_open('staff/manage_profile/change_password' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('current_password');?></label>
                                 <div class="col-sm-5">

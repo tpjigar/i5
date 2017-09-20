@@ -3,5 +3,5 @@ password: 1234
 -----------
 student : maria@example.com
 Teacher : teacher1@example.com
-parents : parent1@example.com parent
+parents : parent1@example.com
 password : 1234

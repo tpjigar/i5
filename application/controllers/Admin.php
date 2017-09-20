@@ -90,6 +90,126 @@ class Admin extends CI_Controller
         $this->load->view('backend/index', $page_data);
     }
 
+    /****MANAGE CUSTOMER*****/
+    function customer($param1 = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'create') {
+            $data['first_name']        = $this->input->post('first_name');
+            $data['last_name']        = $this->input->post('last_name');
+            $data['email_id']       = $this->input->post('email_id');
+            // $data['password']    = $this->input->post('password');
+            $data['mobile']       = $this->input->post('mobile');
+            $data['address']     = $this->input->post('address');
+            $data['is_visible']     = $this->input->post('is_visible');
+            $this->db->insert('customer', $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url() . 'index.php?admin/customer/', 'refresh');
+        }
+        if ($param1 == 'do_update') {
+            $data['first_name']        = $this->input->post('first_name');
+            $data['last_name']        = $this->input->post('last_name');
+            $data['email_id']       = $this->input->post('email_id');
+            // $data['password']    = $this->input->post('password');
+            $data['mobile']       = $this->input->post('mobile');
+            $data['address']     = $this->input->post('address');
+            $data['is_visible']     = $this->input->post('is_visible');
+            
+            $this->db->where('customer_id', $param2);
+            $this->db->update('customer', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/customer/', 'refresh');
+        } else if ($param1 == 'personal_profile') {
+            $page_data['personal_profile']   = true;
+            $page_data['current_customer_id'] = $param2;
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('customer', array('customer_id' => $param2
+            ))->result_array();
+        }
+        if ($param1 == 'delete') {
+            $this->db->where('customer_id', $param2);
+            $this->db->delete('customer');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/customer/', 'refresh');
+        }
+        
+        $page_data['customers']   = $this->db->get('customer')->result_array();
+        $page_data['page_name']  = 'customer';
+        $page_data['page_title'] = get_phrase('manage_customer');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    /****MANAGE CUSTOMER*****/
+    function paidCustomer($param1 = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'do_update') {
+            $data['is_paid']     = $this->input->post('is_paid');
+            
+            $this->db->where('customer_id', $param2);
+            $this->db->update('customer', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/paidCustomer/', 'refresh');
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('customer', array('customer_id' => $param2
+            ))->result_array();
+        }
+        
+        $page_data['page_name']  = 'paidCustomer';
+        $page_data['page_title'] = get_phrase('manage_paidCustomer');
+        $this->load->view('backend/index', $page_data);
+    }
+
+    /****MANAGE CURRENCY*****/
+    function currency($param1 = '', $param2 = '', $param3 = '')
+    {
+        if ($this->session->userdata('admin_login') != 1)
+            redirect(base_url(), 'refresh');
+        if ($param1 == 'create') {
+            $data['currency_name']        = $this->input->post('currency_name');
+            $data['currency_code']        = $this->input->post('currency_code');
+            $data['currency_symbol']       = $this->input->post('currency_symbol');
+            $data['currency_value']       = $this->input->post('currency_value');
+            $data['last_update']     = date("Y-m-d H:i:s");
+            $data['is_visible']     = $this->input->post('is_visible');
+            $this->db->insert('currency', $data);
+            $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
+            redirect(base_url() . 'index.php?admin/currency/', 'refresh');
+        }
+        if ($param1 == 'do_update') {
+           $data['currency_name']        = $this->input->post('currency_name');
+            $data['currency_code']        = $this->input->post('currency_code');
+            $data['currency_symbol']       = $this->input->post('currency_symbol');
+            $data['currency_value']       = $this->input->post('currency_value');
+            $data['last_update']     = date("Y-m-d H:i:s");
+            $data['is_visible']     = $this->input->post('is_visible');
+            
+            $this->db->where('currency_id', $param2);
+            $this->db->update('currency', $data);
+            
+            $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
+            redirect(base_url() . 'index.php?admin/currency/', 'refresh');
+        } else if ($param1 == 'edit') {
+            $page_data['edit_data'] = $this->db->get_where('customer', array('customer_id' => $param2
+            ))->result_array();
+        }
+        if ($param1 == 'delete') {
+            $this->db->where('currency_id', $param2);
+            $this->db->delete('currency');
+            $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
+            redirect(base_url() . 'index.php?admin/currency/', 'refresh');
+        }
+        
+        $page_data['currencys']   = $this->db->get('currency')->result_array();
+        $page_data['page_name']  = 'currency';
+        $page_data['page_title'] = get_phrase('manage_currency');
+        $this->load->view('backend/index', $page_data);
+    }
+
     /****MANAGE CATEGORY*****/
     function category($param1 = '', $param2 = '', $param3 = '')
     {
@@ -593,7 +713,7 @@ class Admin extends CI_Controller
     /******MANAGE EMAIL TEMPLATE***/
     function email_template($param1 = '', $param2 = '', $param3 = '')
     {
-         if ($this->session->userdata('admin_login') != 1)
+        if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
             $data['email_type']        = $this->input->post('email_type');
@@ -686,7 +806,7 @@ class Admin extends CI_Controller
     /******MANAGE PAGES***/
     function pages($param1 = '', $param2 = '', $param3 = '')
     {
-         if ($this->session->userdata('admin_login') != 1)
+        if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
             $data['pages_name']        = $this->input->post('pages_name');
@@ -726,7 +846,7 @@ class Admin extends CI_Controller
     /******MANAGE SEO META***/
     function seo_meta($param1 = '', $param2 = '', $param3 = '')
     {
-         if ($this->session->userdata('admin_login') != 1)
+        if ($this->session->userdata('admin_login') != 1)
             redirect(base_url(), 'refresh');
         if ($param1 == 'create') {
             $data['page_name']        = $this->input->post('page_name');

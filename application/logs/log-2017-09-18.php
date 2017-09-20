@@ -18,3 +18,16 @@ ERROR - 2017-09-18 06:19:20 --> 404 Page Not Found: Admin/invoice
 ERROR - 2017-09-18 06:20:47 --> Query error: Table 'i5.student' doesn't exist - Invalid query: SELECT COUNT(*) AS `numrows` FROM `student`
 ERROR - 2017-09-18 06:20:53 --> Severity: error --> Exception: syntax error, unexpected '?>' D:\XAMPP\htdocs\i5\application\views\backend\admin\dashboard.php 31
 ERROR - 2017-09-18 06:25:54 --> 404 Page Not Found: Admin/voucher
+ERROR - 2017-09-18 13:40:48 --> 404 Page Not Found: Admin/suparAdmin
+ERROR - 2017-09-18 14:03:15 --> 404 Page Not Found: Admin/suparAdmin
+ERROR - 2017-09-18 15:01:10 --> 404 Page Not Found: Admin/customer
+ERROR - 2017-09-18 15:02:16 --> 404 Page Not Found: Staff/dashboard
+ERROR - 2017-09-18 15:02:27 --> 404 Page Not Found: Staff/dashboard
+ERROR - 2017-09-18 15:33:38 --> Query error: Table 'i5.class' doesn't exist - Invalid query: SELECT *
+FROM `class`
+ERROR - 2017-09-18 15:34:05 --> Query error: Table 'i5.class' doesn't exist - Invalid query: SELECT *
+FROM `class`
+ERROR - 2017-09-18 15:35:09 --> Query error: Table 'i5.student' doesn't exist - Invalid query: SELECT COUNT(*) AS `numrows` FROM `student`
+ERROR - 2017-09-18 15:42:28 --> 404 Page Not Found: Staff/teacher_list
+ERROR - 2017-09-18 15:47:12 --> Severity: error --> Exception: Call to undefined method Crud_model::current_academic_year() D:\XAMPP\htdocs\i5\application\controllers\Teacher.php 13
+ERROR - 2017-09-18 15:50:02 --> 404 Page Not Found: Staff/teacher_list

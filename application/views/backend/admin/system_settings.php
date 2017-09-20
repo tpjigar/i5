@@ -55,13 +55,13 @@
                       </div>
                   </div>
                     
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label  class="col-sm-3 control-label"><?php echo get_phrase('currency');?></label>
                       <div class="col-sm-9">
                           <input type="text" class="form-control" name="currency" 
                               value="<?php echo $this->db->get_where('settings' , array('type' =>'currency'))->row()->description;?>">
                       </div>
-                  </div>
+                  </div> -->
                     
                   <div class="form-group">
                       <label  class="col-sm-3 control-label"><?php echo get_phrase('system_email');?></label>
@@ -71,7 +71,7 @@
                       </div>
                   </div>
                     
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                       <label  class="col-sm-3 control-label"><?php echo get_phrase('language');?></label>
                       <div class="col-sm-9">
                           <select name="language" class="form-control">
@@ -90,7 +90,7 @@
 									?>
                            </select>
                       </div>
-                  </div>
+                  </div> 
                     
                   <div class="form-group">
                       <label  class="col-sm-3 control-label"><?php echo get_phrase('text_align');?></label>
@@ -102,6 +102,7 @@
                           </select>
                       </div>
                   </div>
+                  -->
                   
                   <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9">
