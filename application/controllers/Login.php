@@ -44,7 +44,8 @@ class Login extends CI_Controller {
         $login_status = $this->validate_login($email, $password);
         $response['login_status'] = $login_status;
         if ($login_status == 'success') {
-            $response['redirect_url'] = '';
+            // $response['redirect_url'] = '';
+            $response['redirect_url'] = 'index.php?admin/dashboard';
         }
 
         //Replying ajax request with validation response

@@ -9,7 +9,7 @@ class Admin extends CI_Controller
 		parent::__construct();
 		$this->load->database();
         
-         if ($this->crud_model->admin_open_ip()) {
+        if ($this->crud_model->admin_open_ip()) {
             redirect(base_url(). 'index.php?errors/error_permission', 'refresh');
         }
 
@@ -28,6 +28,11 @@ class Admin extends CI_Controller
             redirect(base_url() . 'index.php?admin/dashboard', 'refresh');
     }
     
+    public function login()
+    {
+        redirect(base_url() . 'index.php?login');
+    }
+
     /***ADMIN DASHBOARD***/
     function dashboard()
     {

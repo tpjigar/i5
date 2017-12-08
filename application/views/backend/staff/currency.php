@@ -1,0 +1,116 @@
+
+            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_currency_add/');" 
+            	class="btn btn-primary pull-right">
+                <i class="entypo-plus-circled"></i>
+            	<?php echo get_phrase('add_new_currency');?>
+                </a> 
+                <br><br>
+               <table class="table table-bordered datatable" id="table_export">
+                    <thead>
+                        <tr>
+                            <th><div><?php echo get_phrase('name');?></div></th>
+                            <th><div><?php echo get_phrase('code');?></div></th>
+                            <th><div><?php echo get_phrase('symbol');?></div></th>
+                            <th><div><?php echo get_phrase('value');?></div></th>
+                            <th><div><?php echo get_phrase('last_update');?></div></th>
+                            <th><div><?php echo get_phrase('is_visible');?></div></th>
+                            <th><div><?php echo get_phrase('options');?></div></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                                $currencies	=	$this->db->get('currency' )->result_array();
+                                foreach($currencies as $row):?>
+                        <tr>
+                            <td><?php echo $row['currency_name'];?></td>
+                            <td><?php echo $row['currency_code'];?></td>
+                            <td><?php echo $row['currency_symbol'];?></td>
+                            <td><?php echo $row['currency_value'];?></td>
+                            <td><?php echo $row['last_update'];?></td>
+                            <td><?php if($row['is_visible']==1) echo "Yes"; else echo "No"; ?></td>
+                            <td>
+                                
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
+                                        Action <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-default pull-right" role="menu">
+                                        
+                                        <!-- teacher EDITING LINK -->
+                                        <li>
+                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_currency_edit/<?php echo $row['currency_id'];?>');">
+                                            	<i class="entypo-pencil"></i>
+													<?php echo get_phrase('edit');?>
+                                               	</a>
+                                        				</li>
+                                        <li class="divider"></li>
+                                        
+                                        <!-- teacher DELETION LINK -->
+                                        <li>
+                                        	<a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/currency/delete/<?php echo $row['currency_id'];?>');">
+                                            	<i class="entypo-trash"></i>
+													<?php echo get_phrase('delete');?>
+                                               	</a>
+                                        				</li>
+                                    </ul>
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        <?php endforeach;?>
+                    </tbody>
+                </table>
+
+
+
+<!-----  DATA TABLE EXPORT CONFIGURATIONS ---->                      
+<script type="text/javascript">
+
+	jQuery(document).ready(function($)
+	{
+		
+
+		var datatable = $("#table_export").dataTable({
+			"sPaginationType": "bootstrap",
+			"sDom": "<'row'<'col-xs-3 col-left'l><'col-xs-9 col-right'<'export-data'T>f>r>t<'row'<'col-xs-3 col-left'i><'col-xs-9 col-right'p>>",
+			"oTableTools": {
+				"aButtons": [
+					
+					{
+						"sExtends": "xls",
+						"mColumns": [0,1,2,3]
+					},
+					{
+						"sExtends": "pdf",
+						"mColumns": [0,1,2,3]
+					},
+					{
+						"sExtends": "print",
+						"fnSetText"	   : "Press 'esc' to return",
+						"fnClick": function (nButton, oConfig) {
+							datatable.fnSetColumnVis(4, false);
+                            
+							this.fnPrint( true, oConfig );
+							
+							window.print();
+							
+							$(window).keyup(function(e) {
+								  if (e.which == 27) {
+									  datatable.fnSetColumnVis(4, true);
+                            	  }
+							});
+						},
+						
+					},
+				]
+			},
+			
+		});
+		
+		$(".dataTables_wrapper select").select2({
+			minimumResultsForSearch: -1
+		});
+	});
+		
+</script>
+
