@@ -187,4 +187,40 @@ class Crud_model extends CI_Model {
         }
         return $unread_message_counter;
     }
+
+
+    // Login 
+    public function get_login_attempts($ip, $username, $time) 
+    {
+        return $this->db->where("IP", $ip)->where("username", $username)
+            ->where("timestamp >", time() - $time)->get("login_attempts");
+    }
+
+    public function updateUserToken($userid, $token) 
+    {
+        $this->db->where("ID", $userid)
+        ->update("users", array("token" => $token));
+    }
+
+    public function update_login_attempt($id, $data) 
+    {
+        $this->db->where("ID", $id)->update("login_attempts", $data);
+    }
+
+    public function add_login_attempt($data) 
+    {
+        $this->db->insert("login_attempts", $data);
+    }
+    public function getUserByEmail($email) 
+    {
+        return $this->db->select("ID,email,password,token,active")
+        ->where("email", $email)->get("users");
+    }
+
+    public function getUserByUsername($username) 
+    {
+        return $this->db->select("ID,email,password,token,active")
+        ->where("username", $username)->get("users");
+    }
+
 }

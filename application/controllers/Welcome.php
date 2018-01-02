@@ -18,7 +18,7 @@ class Welcome extends CI_Controller
     /***default functin, redirects to login page if no admin logged in yet***/
     public function index()
     {
-        redirect(base_url() . 'index.php?user', 'refresh');
+        redirect(base_url() . 'user', 'refresh');
     }
     
    

@@ -1,148 +1,177 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7 ]> <html class="ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html class=""><!--<![endif]-->
+
 <head>
-	<?php
-	$system_name	=	$this->db->get_where('settings' , array('type'=>'system_name'))->row()->description;
-	$system_title	=	$this->db->get_where('settings' , array('type'=>'system_title'))->row()->description;
-	?>
 	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="Neon Admin Panel" />
-	<meta name="author" content="" />
-	
-	<title><?php echo get_phrase('login');?> | <?php echo $system_title;?></title>
-	
 
-	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
-	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-	<link rel="stylesheet" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" href="assets/css/neon-core.css">
-	<link rel="stylesheet" href="assets/css/neon-theme.css">
-	<link rel="stylesheet" href="assets/css/neon-forms.css">
-	<link rel="stylesheet" href="assets/css/custom.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<title>Net Biz </title>
 
-	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<!-- head CSS -->	
+	<?php include_once 'head_css.php'; ?>
+	<!-- head CSS /- -->
 
-	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-	<![endif]-->
-	<link rel="shortcut icon" href="assets/images/favicon.png">
-	
 </head>
-<body class="page-body login-page login-form-fall" data-url="http://neon.dev">
 
+<body data-offset="200" data-spy="scroll" data-target=".ow-navigation">
+	
+	<!-- Header -->	
+	<?php include_once 'header.php';?>
+	<!-- Header /- -->
+	<!-- page -->
+	<div class="section-padding"></div>
+	<!-- <div class="section-header">
+				<h3>Login || Register</h3>
+				<p>Want more?Start by Exploring the categories</p>
+			</div> -->
 
-<!-- This is needed when you send requests via Ajax -->
-<script type="text/javascript">
-var baseurl = '<?php echo base_url();?>';
-</script>
-
-<div class="login-container">
-	
-	<div class="login-header login-caret">
-		
-		<div class="login-content" style="width:100%;">
-			
-			<a href="<?php echo base_url();?>" class="logo">
-				<img src="uploads/logo.png" height="60" alt="" />
-			</a>
-			
-			<p class="description">
-            	<h2 style="color:#cacaca; font-weight:100;">
-					<?php echo $system_name;?>
-              </h2>
-           </p>
-			
-			<!-- progress bar indicator -->
-			<div class="login-progressbar-indicator">
-				<h3>43%</h3>
-				<span>logging in...</span>
-			</div>
-		</div>
-		
-	</div>
-	
-	<div class="login-progressbar">
-		<div></div>
-	</div>
-	
-	<div class="login-form">
-		
-		<div class="login-content">
-			
-			<div class="form-login-error">
-				<h3>Invalid login</h3>
-				<p>Please enter correct email and password!</p>
-			</div>
-			
-			<form method="post" role="form" id="form_login">
-				
-				<div class="form-group">
-					
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="entypo-user"></i>
+	<div class="container featuredsignup">
+		<div class="section-padding"></div>
+			<div class="row">
+				<div class="col-md-6 animated fadeInLeft">
+					<div class="featured-section">
+						<div class="section-header">
+							<h3>Login with your creditional</h3>
+							<!-- <p>Today's hot deals handpicked by our Team up!</p> -->
 						</div>
-						
-						<input type="text" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off" data-mask="email" />
-					</div>
-					
-				</div>
-				
-				<div class="form-group">
-					
-					<div class="input-group">
-						<div class="input-group-addon">
-							<i class="entypo-key"></i>
-						</div>
-						
-						<input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off" />
-					</div>
-				
-				</div>
-				
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block btn-login">
-						<i class="entypo-login"></i>
-						Login
-					</button>
-				</div>
-				
-						
-			</form>
-			
-			
-			<div class="login-bottom-links">
-				<a href="<?php echo base_url();?>index.php?login/forgot_password" class="link">
-					<?php echo get_phrase('forgot_your_password');?> ?
-				</a>
-			</div>
-			
+						<div class="login-page">
+
+				<?php echo form_open(site_url("login/pro")) ?>
+    			<div class="input-group">
+      				<span class="input-group-addon white-form-bg"><span class="glyphicon glyphicon-user"></span></span>
+      				<input type="text" name="email" class="form-control" placeholder="<?php echo translate('email') ?>">
+    			</div><br />
+
+    			<div class="input-group">
+      				<span class="input-group-addon white-form-bg"><span class="glyphicon glyphicon-lock"></span></span>
+      				<input type="password" name="pass" class="form-control" placeholder="<?php echo translate("password") ?>">
+    			</div>
+          <p class="decent-margin"><input type="submit" class="btn btn-primary form-control" value="<?php echo translate("login") ?>"></p>
+          <p class="decent-margin"><a href="<?php echo site_url("login/forgotpw") ?>"><?php echo translate("forgot_password ?") ?></a></p>
+
+          <?php //if(!$this->settings->info->disable_social_login) : ?>
+          <!-- <div class="text-center decent-margin-top">
+          <div class="btn-group">
+            <a href="<?php echo site_url("login/twitter_login") ?>" class="btn btn-default" >
+              <img src="<?php echo base_url().'assets/'; ?>images/social/twitter.png" height="20" class='social-icon' style='padding-right: 10px; border-right: 1px solid #EEE;margin-right: 5px; height: 20px;' />
+             Twitter</a>
+          </div>
+
+          <div class="btn-group">
+            <a href="<?php echo site_url("login/facebook_login") ?>" class="btn btn-default" >
+              <img src="<?php echo base_url().'assets/'; ?>images/social/facebook.png" height="20" class='social-icon' style='padding-right: 10px; border-right: 1px solid #EEE;margin-right: 5px; height: 20px;' />
+             Facebook</a>
+          </div>
+
+          <div class="btn-group">
+            <a href="<?php echo site_url("login/google_login") ?>" class="btn btn-default" >
+              <img src="<?php echo base_url().'assets/'; ?>images/social/google.png" height="20" class='social-icon' style='padding-right: 10px; border-right: 1px solid #EEE;margin-right: 5px; height: 20px;' />
+             Google</a>
+          </div>
+          </div> -->
+        <?php //endif; ?>
+          <hr> 
+          <!-- <p class="decent-margin"><a href="<?php echo site_url("register") ?>" class="btn btn-success form-control" ><?php echo translate("register") ?></a></p>-->
+    			<?php echo form_close() ?> 
+
 		</div>
-		
+
+						<!-- <form class="signupform">
+							<div class="row">
+								
+								<div class="col-md-8 col-sm-8 col-xs-6 animated fadeInLeft">
+									<div class="form-group">
+										<input class="form-control" id="input_unm" placeholder="Username / Email Address" type="text">
+									</div>
+								</div>
+								<div class="col-md-8 col-sm-8 col-xs-6">
+									<div class="form-group">
+										<input class="form-control" id="input_pwd" placeholder="Password" type="password">
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input value="Log In!" id="btn_submit" title="LogIn" type="submit">
+									</div>
+								</div>
+							</div>
+						</form> -->
+
+					</div>
+				</div>
+				<div class="col-md-6 animated fadeInRight">
+					<div class="featured-section">
+						<div class="section-header">
+							<h3>Register with your details</h3>
+							<!-- <p>Today's hot deals handpicked by our Team up!</p> -->
+						</div>
+						<form class="signupform">
+							<div class="row">
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input required="" class="form-control" id="input_name" placeholder="Your Full NAme*" type="text">
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input required="" class="form-control" id="input_email" placeholder="Email Address*" type="email">
+									</div>
+								</div>
+								<div class="col-md-7 col-sm-7 col-xs-6 animated fadeInLeft">
+									<div class="form-group">
+										<input class="form-control" id="input_unm" placeholder="Select Your User Name" type="text">
+									</div>
+								</div>
+								<div class="col-md-5 col-xs-6 animated fadeInRight">
+									<a href="#" title="Check Availability">Check Availability</a>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input class="form-control" id="input_pwd" placeholder="Password" type="password">
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input class="form-control" id="input_cfmpwd" placeholder="Confirm Password" type="password">
+									</div>
+								</div>
+								<div class="col-md-12 col-sm-12 col-xs-6">
+									<div class="form-group">
+										<input value="Sign Up!" id="btn_submit" title="SignUp" type="submit">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		<div class="section-padding"></div>
 	</div>
+	<!-- <?php //include $page_name.'.php'; ?> -->
+	<!-- pages / -->
+
+
+	<!-- Counter Section -->
+	<?php include_once 'counter.php';?>
+	<!-- Counter Section /- -->
+
+	<!-- Footer Main -->
+	<?php include_once 'footer.php';?>
+	<!-- Footer /- -->
 	
-</div>
-
-
-	<!-- Bottom Scripts -->
-	<script src="assets/js/gsap/main-gsap.js"></script>
-	<script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-	<script src="assets/js/bootstrap.js"></script>
-	<script src="assets/js/joinable.js"></script>
-	<script src="assets/js/resizeable.js"></script>
-	<script src="assets/js/neon-api.js"></script>
-	<script src="assets/js/jquery.validate.min.js"></script>
-	<script src="assets/js/neon-login.js"></script>
-	<script src="assets/js/neon-custom.js"></script>
-	<script src="assets/js/neon-demo.js"></script>
-
+	<!--Fancybox-js-css
+	======================================================-->
+	<script type="text/javascript" src="<?php echo base_url();?>assets/frontend/js/jquery.fancybox.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/frontend/css/jquery.fancybox.css" />
+	
 </body>
+
 </html>

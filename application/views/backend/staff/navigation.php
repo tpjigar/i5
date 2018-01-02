@@ -32,88 +32,88 @@
 
         <!-- DASHBOARD -->
         <li class="<?php if ($page_name == 'dashboard') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/dashboard">
+            <a href="<?php echo base_url(); ?><?php echo $account_type; ?>/dashboard">
                 <i class="entypo-gauge"></i>
                 <span><?php echo get_phrase('dashboard'); ?></span>
             </a>
         </li>
 
         <!-- <li class="<?php if ($page_name == 'customer') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/customer">
+            <a href="<?php echo base_url(); ?>staff/customer">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('customer'); ?></span>
             </a>
         </li> -->
         <!-- <li class="<?php if ($page_name == 'brand') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/brand">
+            <a href="<?php echo base_url(); ?>staff/brand">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('brand'); ?></span>
             </a>
         </li> -->
         <li class="<?php if ($page_name == 'country') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/country">
+            <a href="<?php echo base_url(); ?>staff/country">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('country'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'currency') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/currency">
+            <a href="<?php echo base_url(); ?>staff/currency">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('currency'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'manage_language') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/manage_language">
+            <a href="<?php echo base_url(); ?>staff/manage_language">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('language'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'category') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/category">
+            <a href="<?php echo base_url(); ?>staff/category">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('category'); ?></span>
             </a>
         </li>
 
         <li class="<?php if ($page_name == 'sub_category') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/sub_category">
+            <a href="<?php echo base_url(); ?>staff/sub_category">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('sub_category'); ?></span>
             </a>
         </li>
 
         <!-- <li class="<?php if ($page_name == 'product') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/product">
+            <a href="<?php echo base_url(); ?>staff/product">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('product'); ?></span>
             </a>
         </li> -->
         <!-- <li class="<?php if ($page_name == 'email_template') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/email_template">
+            <a href="<?php echo base_url(); ?>staff/email_template">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('email_template'); ?></span>
             </a>
         </li> -->
         <!-- <li class="<?php if ($page_name == 'pages') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/pages">
+            <a href="<?php echo base_url(); ?>staff/pages">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('stastic_pages'); ?></span>
             </a>
         </li> -->
         <!-- <li class="<?php if ($page_name == 'advertisement') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/advertisement">
+            <a href="<?php echo base_url(); ?>staff/advertisement">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('advertisement'); ?></span>
             </a>
         </li> -->
         <!-- <li class="<?php if ($page_name == 'seo_meta') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/seo_meta">
+            <a href="<?php echo base_url(); ?>staff/seo_meta">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('dynamic_SEO'); ?></span>
             </a>
         </li> -->
        <!--  <li class="<?php if ($page_name == 'paid_customer') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?staff/paid_customer">
+            <a href="<?php echo base_url(); ?>staff/paid_customer">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('paid_customer'); ?></span>
             </a>
@@ -130,7 +130,7 @@
             <ul>
               
                 <li class="<?php if ($page_name == 'faq') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?staff/faq">
+                    <a href="<?php echo base_url(); ?>staff/faq">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('faq'); ?></span>
                     </a>
                 </li>
@@ -140,7 +140,7 @@
 
         <!-- ACCOUNT -->
         <li class="<?php if ($page_name == 'manage_profile') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?<?php echo $account_type; ?>/manage_profile">
+            <a href="<?php echo base_url(); ?><?php echo $account_type; ?>/manage_profile">
                 <i class="entypo-lock"></i>
                 <span><?php echo get_phrase('account'); ?></span>
             </a>

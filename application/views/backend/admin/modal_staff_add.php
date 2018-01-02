@@ -9,7 +9,7 @@
             </div>
 			<div class="panel-body">
 				
-                <?php echo form_open(base_url() . 'index.php?admin/staff/create/' , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
+                <?php echo form_open(base_url() . 'admin/staff/create/' , array('class' => 'form-horizontal form-groups-bordered validate', 'enctype' => 'multipart/form-data'));?>
 	
 					<div class="form-group">
 						<label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('name');?></label>
@@ -71,8 +71,8 @@
                         
 						<div class="col-sm-5">
 							<select name="is_active" class="form-control">
-                              <option value="yes"><?php echo get_phrase('yes');?></option>
-                              <option value="no"><?php echo get_phrase('no');?></option>
+                              <option value="1"><?php echo get_phrase('yes');?></option>
+                              <option value="0"><?php echo get_phrase('no');?></option>
                           </select>
 						</div> 
 					</div>

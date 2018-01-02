@@ -42,3 +42,15 @@
 </script>
 
 <?php endif;?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.set_langs').on('click',function(){
+            var lang_url = $(this).data('href');                                    
+            $.ajax({url: lang_url, success: function(result){
+                location.reload();
+            }});
+        });
+        // $('.top-bar-right').load('<?php echo base_url(); ?>index.php/home/top_bar_right');
+    });
+</script>

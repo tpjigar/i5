@@ -12,7 +12,7 @@ foreach ( $edit_data as $row):
             	</div>
             </div>
 			<div class="panel-body">
-                    <?php echo form_open(base_url() . 'index.php?admin/staff/do_update/'.$row['staff_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
+                    <?php echo form_open(base_url() . 'admin/staff/do_update/'.$row['staff_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
                         		
                                 <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
@@ -69,8 +69,8 @@ foreach ( $edit_data as $row):
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('is_active');?></label>
                                 <div class="col-sm-5">
                                     <select name="is_active" class="form-control">
-                                    	<option value="yes" <?php if($row['is_active'] == 'yes')echo 'selected';?>><?php echo get_phrase('yes');?></option>
-                                    	<option value="no" <?php if($row['is_active'] == 'no')echo 'selected';?>><?php echo get_phrase('no');?></option>
+                                    	<option value="1" <?php if($row['is_active'] == 1)echo 'selected';?>><?php echo get_phrase('yes');?></option>
+                                    	<option value="0" <?php if($row['is_active'] == 0)echo 'selected';?>><?php echo get_phrase('no');?></option>
                                     </select>
                                 </div>
                             </div>

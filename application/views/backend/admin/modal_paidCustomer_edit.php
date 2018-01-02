@@ -12,7 +12,7 @@ foreach ( $edit_data as $row):
                 </div>
             </div>
             <div class="panel-body">
-                    <?php echo form_open(base_url() . 'index.php?admin/paidCustomer/do_update/'.$row['customer_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+                    <?php echo form_open(base_url() . 'admin/paidCustomer/do_update/'.$row['customer_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                                                          
                             
                             <div class="form-group">

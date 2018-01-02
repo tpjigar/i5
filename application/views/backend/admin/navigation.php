@@ -4,7 +4,7 @@
         <!-- logo -->
         <div class="logo" style="">
             <a href="<?php echo base_url(); ?>">
-                <img src="uploads/logo.png"  style="max-height:60px;"/>
+                <img src="<?php echo base_url();?>uploads/logo.png"  style="max-height:60px;"/>
             </a>
         </div>
 
@@ -32,7 +32,7 @@
 
         <!-- DASHBOARD -->
         <li class="<?php if ($page_name == 'dashboard') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/dashboard">
+            <a href="<?php echo base_url(); ?>admin/dashboard">
                 <i class="entypo-gauge"></i>
                 <span><?php echo get_phrase('dashboard'); ?></span>
             </a>
@@ -46,12 +46,12 @@
             </a>
             <ul>
                 <!-- <li class="<?php if ($page_name == 'suparAdmin') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/suparAdmin">
+                    <a href="<?php echo base_url(); ?>admin/suparAdmin">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('suparAdmin'); ?></span>
                     </a>
                 </li> -->
                 <li class="<?php if ($page_name == 'staff') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/staff">
+                    <a href="<?php echo base_url(); ?>admin/staff">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('simple_admin'); ?></span>
                     </a>
                 </li>
@@ -59,81 +59,81 @@
         </li>
 
         <li class="<?php if ($page_name == 'customer') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/customer">
+            <a href="<?php echo base_url(); ?>admin/customer">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('customer'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'brand') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/brand">
+            <a href="<?php echo base_url(); ?>admin/brand">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('brand'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'country') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/country">
+            <a href="<?php echo base_url(); ?>admin/country">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('country'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'currency') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/currency">
+            <a href="<?php echo base_url(); ?>admin/currency">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('currency'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'manage_language') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/manage_language">
+            <a href="<?php echo base_url(); ?>admin/manage_language">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('language'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'category') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/category">
+            <a href="<?php echo base_url(); ?>admin/category">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('category'); ?></span>
             </a>
         </li>
 
         <li class="<?php if ($page_name == 'sub_category') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/sub_category">
+            <a href="<?php echo base_url(); ?>admin/sub_category">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('sub_category'); ?></span>
             </a>
         </li>
 
         <li class="<?php if ($page_name == 'product') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/product">
+            <a href="<?php echo base_url(); ?>admin/product">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('product'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'email_template') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/email_template">
+            <a href="<?php echo base_url(); ?>admin/email_template">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('email_template'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'pages') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/pages">
+            <a href="<?php echo base_url(); ?>admin/pages">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('stastic_pages'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'advertisement') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/advertisement">
+            <a href="<?php echo base_url(); ?>admin/advertisement">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('advertisement'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'seo_meta') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/seo_meta">
+            <a href="<?php echo base_url(); ?>admin/seo_meta">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('dynamic_SEO'); ?></span>
             </a>
         </li>
         <li class="<?php if ($page_name == 'paidCustomer') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/paidCustomer">
+            <a href="<?php echo base_url(); ?>admin/paidCustomer">
                 <i class="entypo-users"></i>
                 <span><?php echo get_phrase('paid_customer'); ?></span>
             </a>
@@ -150,7 +150,7 @@
             <ul>
               
                 <li class="<?php if ($page_name == 'faq') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/faq">
+                    <a href="<?php echo base_url(); ?>admin/faq">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('faq'); ?></span>
                     </a>
                 </li>
@@ -168,7 +168,7 @@
             </a>
             <ul>
                 <li class="<?php if ($page_name == 'system_settings') echo 'active'; ?> ">
-                    <a href="<?php echo base_url(); ?>index.php?admin/system_settings">
+                    <a href="<?php echo base_url(); ?>admin/system_settings">
                         <span><i class="entypo-dot"></i> <?php echo get_phrase('general_settings'); ?></span>
                     </a>
                 </li>
@@ -178,7 +178,7 @@
 
         <!-- ACCOUNT -->
         <li class="<?php if ($page_name == 'manage_profile') echo 'active'; ?> ">
-            <a href="<?php echo base_url(); ?>index.php?admin/manage_profile">
+            <a href="<?php echo base_url(); ?>admin/manage_profile">
                 <i class="entypo-lock"></i>
                 <span><?php echo get_phrase('account'); ?></span>
             </a>

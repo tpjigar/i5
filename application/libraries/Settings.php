@@ -6,11 +6,12 @@ class Settings
 
 	var $info=array();
 
-	var $version = "1.0";
+	var $version = "1.3";
 
 	public function __construct() 
 	{
 		$CI =& get_instance();
+		
 		// $site = $CI->db->select("site_name,site_desc,site_email,
 		// 	upload_path_relative, upload_path, site_logo, register,
 		// 	 disable_captcha, date_format, avatar_upload, file_types,
@@ -20,15 +21,18 @@ class Settings
 		// 	 payment_enabled, payment_symbol, global_premium, install,
 		// 	 login_protect, activate_account")
 		// ->where("ID", 1)
-		// ->get("settings");
-		
-		// if($site->num_rows() == 0) {
-		// 	$CI->template->error(
-		// 		"You are missing the site settings database row."
-		// 	);
-		// } else {
-		// 	$this->info = $site->row();
-		// }
+		// ->get("site_settings");
+		$site = $CI->db->get('settings');
+
+		if($site->num_rows() == 0) {
+			// $CI->template->error(
+				echo "You are missing the site settings database row.";
+			// );
+		} else {
+			$this->info = $site->result();
+		}
+		// echo "<pre>";
+		// print_r($this->info);
 	}
 
 }

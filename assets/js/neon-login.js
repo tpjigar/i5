@@ -59,15 +59,17 @@ var neonLogin = neonLogin || {};
 					
 					// The form data are subbmitted, we can forward the progress to 70%
 					neonLogin.setPercentage(40 + random_pct);
-											
+							
+				
 					// Send data to the server
 					$.ajax({
-						url: baseurl + 'index.php?login/ajax_login',
+						url: baseurl + 'login/ajax_login',
 						method: 'POST',
 						dataType: 'json',
 						data: {
 							email: $("input#email").val(),
 							password: $("input#password").val(),
+							// csrf_token_name: $("input#csrf_name").val(),
 						},
 						error: function()
 						{

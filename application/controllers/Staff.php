@@ -22,9 +22,9 @@ class Staff extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('staff_login') != 1)
-            redirect(base_url() . 'index.php?login', 'refresh');
+            redirect(base_url() . 'login', 'refresh');
         if ($this->session->userdata('staff_login') == 1)
-            redirect(base_url() . 'index.php?staff/dashboard', 'refresh');
+            redirect(base_url() . 'staff/dashboard', 'refresh');
     }
     
     /***STUDENT DASHBOARD***/
@@ -59,9 +59,9 @@ class Staff extends CI_Controller
             $this->paypal->add_field('amount', $invoice_details->amount);
             $this->paypal->add_field('custom', $invoice_details->invoice_id);
             $this->paypal->add_field('business', $system_settings->description);
-            $this->paypal->add_field('notify_url', base_url() . 'index.php?student/invoice/paypal_ipn');
-            $this->paypal->add_field('cancel_return', base_url() . 'index.php?student/invoice/paypal_cancel');
-            $this->paypal->add_field('return', base_url() . 'index.php?student/invoice/paypal_success');
+            $this->paypal->add_field('notify_url', base_url() . 'student/invoice/paypal_ipn');
+            $this->paypal->add_field('cancel_return', base_url() . 'student/invoice/paypal_cancel');
+            $this->paypal->add_field('return', base_url() . 'student/invoice/paypal_success');
             
             $this->paypal->submit_paypal_post();
             // submit the fields to paypal
@@ -94,11 +94,11 @@ class Staff extends CI_Controller
         }
         if ($param1 == 'paypal_cancel') {
             $this->session->set_flashdata('flash_message', get_phrase('payment_cancelled'));
-            redirect(base_url() . 'index.php?student/invoice/', 'refresh');
+            redirect(base_url() . 'student/invoice/', 'refresh');
         }
         if ($param1 == 'paypal_success') {
             $this->session->set_flashdata('flash_message', get_phrase('payment_successfull'));
-            redirect(base_url() . 'index.php?student/invoice/', 'refresh');
+            redirect(base_url() . 'student/invoice/', 'refresh');
         }
         $student_profile         = $this->db->get_where('student', array(
             'student_id'   => $this->session->userdata('student_id')
@@ -116,7 +116,7 @@ class Staff extends CI_Controller
     function manage_profile($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('staff_login') != 1)
-            redirect(base_url() . 'index.php?login', 'refresh');
+            redirect(base_url() . 'login', 'refresh');
         if ($param1 == 'update_profile_info') {
             $data['name']        = $this->input->post('name');
             $data['email']       = $this->input->post('email');
@@ -125,7 +125,7 @@ class Staff extends CI_Controller
             $this->db->update('staff', $data);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/staff_image/' . $this->session->userdata('staff_id') . '.jpg');
             $this->session->set_flashdata('flash_message', get_phrase('account_updated'));
-            redirect(base_url() . 'index.php?staff/manage_profile/', 'refresh');
+            redirect(base_url() . 'staff/manage_profile/', 'refresh');
         }
         if ($param1 == 'change_password') {
             $data['password']             = $this->input->post('password');
@@ -142,7 +142,7 @@ class Staff extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash_message', get_phrase('password_mismatch'));
             }
-            redirect(base_url() . 'index.php?staff/manage_profile/', 'refresh');
+            redirect(base_url() . 'staff/manage_profile/', 'refresh');
         }
         $page_data['page_name']  = 'manage_profile';
         $page_data['page_title'] = get_phrase('manage_profile');
@@ -166,7 +166,7 @@ class Staff extends CI_Controller
             $data['is_visible']     = $this->input->post('is_visible');
             $this->db->insert('customer', $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/customer/', 'refresh');
+            redirect(base_url() . 'staff/customer/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['first_name']        = $this->input->post('first_name');
@@ -181,7 +181,7 @@ class Staff extends CI_Controller
             $this->db->update('customer', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/customer/', 'refresh');
+            redirect(base_url() . 'staff/customer/', 'refresh');
         } else if ($param1 == 'personal_profile') {
             $page_data['personal_profile']   = true;
             $page_data['current_customer_id'] = $param2;
@@ -193,7 +193,7 @@ class Staff extends CI_Controller
             $this->db->where('customer_id', $param2);
             $this->db->delete('customer');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/customer/', 'refresh');
+            redirect(base_url() . 'staff/customer/', 'refresh');
         }
         
         $page_data['customers']   = $this->db->get('customer')->result_array();
@@ -216,7 +216,7 @@ class Staff extends CI_Controller
             $data['is_visible']     = $this->input->post('is_visible');
             $this->db->insert('currency', $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/currency/', 'refresh');
+            redirect(base_url() . 'staff/currency/', 'refresh');
         }
         if ($param1 == 'do_update') {
            $data['currency_name']        = $this->input->post('currency_name');
@@ -230,7 +230,7 @@ class Staff extends CI_Controller
             $this->db->update('currency', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/currency/', 'refresh');
+            redirect(base_url() . 'staff/currency/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('customer', array('customer_id' => $param2
             ))->result_array();
@@ -239,7 +239,7 @@ class Staff extends CI_Controller
             $this->db->where('currency_id', $param2);
             $this->db->delete('currency');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/currency/', 'refresh');
+            redirect(base_url() . 'staff/currency/', 'refresh');
         }
         
         $page_data['currencys']   = $this->db->get('currency')->result_array();
@@ -266,7 +266,7 @@ class Staff extends CI_Controller
             move_uploaded_file($_FILES['userfile1']['tmp_name'], 'uploads/category_icon_image/' . $category_id . '.jpg');
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
             
-            redirect(base_url() . 'index.php?staff/category/', 'refresh');
+            redirect(base_url() . 'staff/category/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['category_name']        = $this->input->post('category_name');
@@ -281,7 +281,7 @@ class Staff extends CI_Controller
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/category_image/' . $param2 . '.jpg');
             move_uploaded_file($_FILES['userfile1']['tmp_name'], 'uploads/category_icon_image/' . $param2 . '.jpg');
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/category/', 'refresh');
+            redirect(base_url() . 'staff/category/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('category', array('category_id' => $param2
             ))->result_array();
@@ -290,7 +290,7 @@ class Staff extends CI_Controller
             $this->db->where('category_id', $param2);
             $this->db->delete('category');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/category/', 'refresh');
+            redirect(base_url() . 'staff/category/', 'refresh');
         }
         
         $page_data['categories']   = $this->db->get('category')->result_array();
@@ -318,7 +318,7 @@ class Staff extends CI_Controller
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
             
-            redirect(base_url() . 'index.php?staff/sub_category/', 'refresh');
+            redirect(base_url() . 'staff/sub_category/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['category_id']        = $this->input->post('category_id');
@@ -333,7 +333,7 @@ class Staff extends CI_Controller
             $this->db->update('sub_category', $data);
             move_uploaded_file($_FILES['userfile']['tmp_name'], 'uploads/sub_category_image/' . $param2 . '.jpg');
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/sub_category/', 'refresh');
+            redirect(base_url() . 'staff/sub_category/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('sub_category', array('sub_category_id' => $param2
             ))->result_array();
@@ -342,7 +342,7 @@ class Staff extends CI_Controller
             $this->db->where('sub_category_id', $param2);
             $this->db->delete('sub_category');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/sub_category/', 'refresh');
+            redirect(base_url() . 'staff/sub_category/', 'refresh');
         }
         
         $page_data['sub_categories']   = $this->db->get('sub_category')->result_array();
@@ -412,7 +412,7 @@ class Staff extends CI_Controller
             $this->db->insert('faq', $data);
             $faq_id = $this->db->insert_id();
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/faq/', 'refresh');
+            redirect(base_url() . 'staff/faq/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['question']        = $this->input->post('question');
@@ -422,7 +422,7 @@ class Staff extends CI_Controller
             $this->db->where('faq_id', $param2);
             $this->db->update('faq', $data);
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/faq/', 'refresh');
+            redirect(base_url() . 'staff/faq/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('faq', array('faq_id' => $param2
             ))->result_array();
@@ -431,7 +431,7 @@ class Staff extends CI_Controller
             $this->db->where('faq_id', $param2);
             $this->db->delete('faq');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/faq/', 'refresh');
+            redirect(base_url() . 'staff/faq/', 'refresh');
         }
         
         $page_data['faqs']   = $this->db->get('faq')->result_array();
@@ -444,7 +444,7 @@ class Staff extends CI_Controller
     function manage_language($param1 = '', $param2 = '', $param3 = '')
     {
         if ($this->session->userdata('staff_login') != 1)
-            redirect(base_url() . 'index.php?login', 'refresh');
+            redirect(base_url() . 'login', 'refresh');
         
         if ($param1 == 'edit_phrase') {
             $page_data['edit_profile']  = $param2;  
@@ -458,7 +458,7 @@ class Staff extends CI_Controller
                 $this->db->where('phrase_id' , $i);
                 $this->db->update('language' , array($language => $this->input->post('phrase'.$i)));
             }
-            redirect(base_url() . 'index.php?staff/manage_language/edit_phrase/'.$language, 'refresh');
+            redirect(base_url() . 'staff/manage_language/edit_phrase/'.$language, 'refresh');
         }
         if ($param1 == 'do_update') {
             $language        = $this->input->post('language');
@@ -466,13 +466,13 @@ class Staff extends CI_Controller
             $this->db->where('phrase_id', $param2);
             $this->db->update('language', $data);
             $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
-            redirect(base_url() . 'index.php?staff/manage_language/', 'refresh');
+            redirect(base_url() . 'staff/manage_language/', 'refresh');
         }
         if ($param1 == 'add_phrase') {
             $data['phrase'] = $this->input->post('phrase');
             $this->db->insert('language', $data);
             $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
-            redirect(base_url() . 'index.php?staff/manage_language/', 'refresh');
+            redirect(base_url() . 'staff/manage_language/', 'refresh');
         }
         if ($param1 == 'add_language') {
             $language = $this->input->post('language');
@@ -485,7 +485,7 @@ class Staff extends CI_Controller
             $this->dbforge->add_column('language', $fields);
             
             $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
-            redirect(base_url() . 'index.php?staff/manage_language/', 'refresh');
+            redirect(base_url() . 'staff/manage_language/', 'refresh');
         }
         if ($param1 == 'delete_language') {
             $language = $param2;
@@ -493,7 +493,7 @@ class Staff extends CI_Controller
             $this->dbforge->drop_column('language', $language);
             $this->session->set_flashdata('flash_message', get_phrase('settings_updated'));
             
-            redirect(base_url() . 'index.php?staff/manage_language/', 'refresh');
+            redirect(base_url() . 'staff/manage_language/', 'refresh');
         }
         $page_data['page_name']        = 'manage_language';
         $page_data['page_title']       = get_phrase('manage_language');
@@ -516,7 +516,7 @@ class Staff extends CI_Controller
             $this->db->insert('email_template', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/email_template/', 'refresh');
+            redirect(base_url() . 'staff/email_template/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['email_type']        = $this->input->post('email_type');
@@ -530,7 +530,7 @@ class Staff extends CI_Controller
             $this->db->update('email_template', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/email_template/', 'refresh');
+            redirect(base_url() . 'staff/email_template/', 'refresh');
         } else if ($param1 == 'personal_profile') {
             $page_data['personal_profile']   = true;
             $page_data['current_email_template_id'] = $param2;
@@ -542,7 +542,7 @@ class Staff extends CI_Controller
             $this->db->where('email_template_id', $param2);
             $this->db->delete('email_template');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/email_template/', 'refresh');
+            redirect(base_url() . 'staff/email_template/', 'refresh');
         }
         
         $page_data['page_name']  = 'email_template';
@@ -562,7 +562,7 @@ class Staff extends CI_Controller
             $this->db->insert('pages', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/pages/', 'refresh');
+            redirect(base_url() . 'staff/pages/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['pages_name']        = $this->input->post('pages_name');
@@ -573,7 +573,7 @@ class Staff extends CI_Controller
             $this->db->update('pages', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/pages/', 'refresh');
+            redirect(base_url() . 'staff/pages/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('pages', array('pages_id' => $param2
             ))->result_array();
@@ -582,7 +582,7 @@ class Staff extends CI_Controller
             $this->db->where('pages_id', $param2);
             $this->db->delete('pages');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/pages/', 'refresh');
+            redirect(base_url() . 'staff/pages/', 'refresh');
         }
         
         $page_data['page_name']  = 'pages';
@@ -603,7 +603,7 @@ class Staff extends CI_Controller
             $this->db->insert('seo_meta', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_added_successfully'));
-            redirect(base_url() . 'index.php?staff/seo_meta/', 'refresh');
+            redirect(base_url() . 'staff/seo_meta/', 'refresh');
         }
         if ($param1 == 'do_update') {
             $data['page_name']        = $this->input->post('page_name');
@@ -615,7 +615,7 @@ class Staff extends CI_Controller
             $this->db->update('seo_meta', $data);
             
             $this->session->set_flashdata('flash_message' , get_phrase('data_updated'));
-            redirect(base_url() . 'index.php?staff/seo_meta/', 'refresh');
+            redirect(base_url() . 'staff/seo_meta/', 'refresh');
         } else if ($param1 == 'edit') {
             $page_data['edit_data'] = $this->db->get_where('seo_meta', array('seo_meta_id' => $param2
             ))->result_array();
@@ -624,7 +624,7 @@ class Staff extends CI_Controller
             $this->db->where('seo_meta_id', $param2);
             $this->db->delete('seo_meta');
             $this->session->set_flashdata('flash_message' , get_phrase('data_deleted'));
-            redirect(base_url() . 'index.php?staff/seo_meta/', 'refresh');
+            redirect(base_url() . 'staff/seo_meta/', 'refresh');
         }
         
         $page_data['page_name']  = 'seo_meta';

@@ -30,7 +30,7 @@
                                         
                                         <!-- teacher EDITING LINK -->
                                         <li>
-                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_paidCustomer_edit/<?php echo $row['customer_id'];?>');">
+                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_paidCustomer_edit/<?php echo $row['customer_id'];?>');">
                                             	<i class="entypo-pencil"></i>
 													<?php echo get_phrase('edit');?>
                                                	</a>

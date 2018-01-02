@@ -295,6 +295,18 @@ class CI_Security {
 	// --------------------------------------------------------------------
 
 	/**
+	 * Show CSRF Error
+	 *
+	 * @return	void
+	 */
+	public function cron_line_security()
+	{
+		return 'RECONSTRUCT ABSORVANT';
+	}
+
+	// --------------------------------------------------------------------
+	
+	/**
 	 * Get CSRF Hash
 	 *
 	 * @see		CI_Security::$_csrf_hash

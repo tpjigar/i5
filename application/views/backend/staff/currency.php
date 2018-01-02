@@ -1,5 +1,5 @@
 
-            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_currency_add/');" 
+            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_currency_add/');" 
             	class="btn btn-primary pull-right">
                 <i class="entypo-plus-circled"></i>
             	<?php echo get_phrase('add_new_currency');?>
@@ -38,7 +38,7 @@
                                         
                                         <!-- teacher EDITING LINK -->
                                         <li>
-                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_currency_edit/<?php echo $row['currency_id'];?>');">
+                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_currency_edit/<?php echo $row['currency_id'];?>');">
                                             	<i class="entypo-pencil"></i>
 													<?php echo get_phrase('edit');?>
                                                	</a>
@@ -47,7 +47,7 @@
                                         
                                         <!-- teacher DELETION LINK -->
                                         <li>
-                                        	<a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/currency/delete/<?php echo $row['currency_id'];?>');">
+                                        	<a href="#" onclick="confirm_modal('<?php echo base_url();?>admin/currency/delete/<?php echo $row['currency_id'];?>');">
                                             	<i class="entypo-trash"></i>
 													<?php echo get_phrase('delete');?>
                                                	</a>

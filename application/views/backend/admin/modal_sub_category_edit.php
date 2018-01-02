@@ -12,7 +12,7 @@ foreach ( $edit_data as $row):
                 </div>
             </div>
             <div class="panel-body">
-                    <?php echo form_open(base_url() . 'index.php?admin/sub_category/do_update/'.$row['sub_category_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
+                    <?php echo form_open(base_url() . 'admin/sub_category/do_update/'.$row['sub_category_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top', 'enctype' => 'multipart/form-data'));?>
                                 
                             <div class="form-group">
                                 <label for="field-1" class="col-sm-3 control-label"><?php echo get_phrase('photo');?></label>
@@ -67,8 +67,8 @@ foreach ( $edit_data as $row):
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('is_visible');?></label>
                                 <div class="col-sm-5">
                                     <select name="is_visible" class="form-control">
-                                        <option value="yes" <?php if($row['is_visible'] == 'yes')echo 'selected';?>><?php echo get_phrase('yes');?></option>
-                                        <option value="no" <?php if($row['is_visible'] == 'no')echo 'selected';?>><?php echo get_phrase('no');?></option>
+                                        <option value="1" <?php if($row['is_visible'] == '1')echo 'selected';?>><?php echo get_phrase('yes');?></option>
+                                        <option value="0" <?php if($row['is_visible'] == '0')echo 'selected';?>><?php echo get_phrase('no');?></option>
                                     </select>
                                 </div>
                             </div>

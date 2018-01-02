@@ -13,7 +13,7 @@
                                 foreach($state as $row):?>
                         <tr>
                             <td><?php echo $row['state_name'];?></td>
-                            <td><a href="<?php echo base_url().'index.php?admin/city/'.$row['state_id'] ?>"><?php echo get_phrase('city');?></a></td>
+                            <td><a href="<?php echo base_url().'admin/city/'.$row['state_id'] ?>"><?php echo get_phrase('city');?></a></td>
                             <td><?php if($row['is_active'] == 1) echo "Yes"; else echo "No"; ?></td>
                         </tr>
                         <?php endforeach;?>

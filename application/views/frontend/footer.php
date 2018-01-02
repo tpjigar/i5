@@ -125,3 +125,118 @@
 	
 	<!-- Library - Theme JS -->
 	<script src="<?php echo base_url();?>assets/frontend/js/functions.js"></script>
+
+
+	<!-- mlm script -->
+	<script type="text/javascript">
+ 	var members = [
+    {memberId : 1, parentId:null, amount:200, otherInfo:"blah"},
+    {memberId : 2, parentId:1, amount:300, otherInfo:"blah1"},
+    {memberId : 3, parentId:1, amount:400, otherInfo:"blah2"},
+    {memberId : 4, parentId:1, amount:800, otherInfo:"JIGAR1"},
+    {memberId : 5, parentId:1, amount:800, otherInfo:"JIGAR2"},
+    {memberId : 6, parentId:1, amount:600, otherInfo:"blah4"},
+    {memberId : 21, parentId:2, amount:500, otherInfo:"blah3"},
+    {memberId : 22, parentId:2, amount:700, otherInfo:"blah5"},
+    {memberId : 23, parentId:2, amount:800, otherInfo:"blah6"},
+    {memberId : 24, parentId:2, amount:900, otherInfo:"blah7"},
+    {memberId : 25, parentId:2, amount:0, otherInfo:"blah8"},
+    {memberId : 31, parentId:3, amount:800, otherInfo:"blah9"},
+    {memberId : 32, parentId:3, amount:250, otherInfo:"blah10"},
+    {memberId : 33, parentId:3, amount:10, otherInfo:"blah11"},
+    {memberId : 34, parentId:3, amount:990, otherInfo:"blah12"},
+    {memberId : 41, parentId:4, amount:400, otherInfo:"blah13"},
+    {memberId : 42, parentId:4, amount:123, otherInfo:"blah14"},
+    {memberId : 43, parentId:4, amount:321, otherInfo:"blah15"},
+    {memberId : 51, parentId:5, amount:10000, otherInfo:"blah7"},
+    {memberId : 52, parentId:5, amount:47, otherInfo:"blah17"},
+    {memberId : 61, parentId:6, amount:534, otherInfo:"blah18"},
+    {memberId : 62, parentId:6, amount:55943, otherInfo:"blah19"},
+    {memberId : 7, parentId:21, amount:2, otherInfo:"blah27"},
+    {memberId : 8, parentId:31, amount:2, otherInfo:"blah27"},
+    {memberId : 9, parentId:32, amount:2, otherInfo:"blah27"},
+    {memberId : 10, parentId:41, amount:2, otherInfo:"blah27"},
+    {memberId : 110, parentId:41, amount:-10, otherInfo:"blah677"}
+    
+];
+var testImgSrc = "http://0.gravatar.com/avatar/06005cd2700c136d09e71838645d36ff?s=69&d=wavatar";
+(function heya( parentId ){
+    // This is slow and iterates over each object everytime.
+    // Removing each item from the array before re-iterating 
+    // may be faster for large datasets.
+    for(var i = 0; i < members.length; i++){
+        var member = members[i];
+        if(member.parentId === parentId){
+            var parent = parentId ? $("#containerFor" + parentId) : $("#mainContainer"),
+                memberId = member.memberId,
+                    metaInfo = "<img src='"+testImgSrc+"'/>" + member.otherInfo + " ($" + member.amount + ")";
+            parent.append("<div class='container1' id='containerFor" + memberId + "'><div class='member'>" + memberId + "<div class='metaInfo'>" + metaInfo + "</div></div></div>");
+            heya(memberId);
+        } 
+    }
+ }( null ));
+
+// makes it pretty:
+// recursivley resizes all children to fit within the parent.
+var pretty = function(){
+    var self = $(this),
+        children = self.children(".container1"),
+        // subtract 4% for margin/padding/borders.
+        width = (100/children.length) - 2;
+    children
+        .css("width", width + "%")
+        .each(pretty);
+    
+};
+$("#mainContainer").each(pretty);
+
+
+// faq
+	var selectIds = $('#collapse1,#collapse2,#collapse3,#collapse4');
+	$(function ($) {
+	    selectIds.on('show.bs.collapse hidden.bs.collapse', function () {
+	        $(this).prev().find('.glyphicon').toggleClass('glyphicon-plus glyphicon-minus');
+	    })
+	});
+ </script>
+
+ <!-- details page -->
+<script>
+$(function(){
+	
+	//////// More Views
+	var owl=$("#more-views");owl.owlCarousel({loop:false,navRewind:false,responsive:{0:{items:4,loop:true},480:{items:6},768:{items:4},991:{items:5},1200:{items:6}},nav:true,navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],dots:false,autoplay:false,autoplayTimeout:4500});
+	//////// More Views
+	
+	//////// Recently Viewed
+		var owl=$("#recent");
+		owl.owlCarousel({loop:true,responsive:{0:{items:1},480:{items:1},640:{items:2},800:{items:3},1170:{items:3}},nav:true,navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],dots:false,autoplay:true,autoplayTimeout:4500});
+	//////// Recently Viewed
+	
+	
+	//////// Similar Items
+		var owl=$("#similar");
+		owl.owlCarousel({loop:true,responsive:{0:{items:1},480:{items:1},640:{items:2},800:{items:3},1170:{items:3}},nav:true,navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],dots:false,autoplay:true,autoplayTimeout:4500});
+	//////// Similar Items
+	
+	
+	//////// Tabbing Code
+	$(window).load(function(){
+		window.ShowTab = function(num) {
+			$('.tabs1 .infotabs-hd a').removeClass('active');
+			$('.tabs1 .anchor-' + num).addClass('active');
+			$('.tabs1 .info-content').css("visibility", 'hidden');
+			$('.tabs1 .info-content').css('height', '0');
+			$('#tab-' + num).css("visibility", 'visible');
+			$('#tab-' + num).css('height', 'auto');
+		}
+		$(function(){
+			ShowTab(1);
+		});
+	});
+	//////// Tabbing Code
+	
+});
+	
+	
+	</script>

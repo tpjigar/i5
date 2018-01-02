@@ -15,16 +15,16 @@
 	<title><?php echo get_phrase('login');?> | <?php echo $system_title;?></title>
 	
 
-	<link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-	<link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/font-icons/entypo/css/entypo.css">
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-	<link rel="stylesheet" href="assets/css/bootstrap.css">
-	<link rel="stylesheet" href="assets/css/neon-core.css">
-	<link rel="stylesheet" href="assets/css/neon-theme.css">
-	<link rel="stylesheet" href="assets/css/neon-forms.css">
-	<link rel="stylesheet" href="assets/css/custom.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/neon-core.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/neon-theme.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/neon-forms.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/custom.css">
 
-	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/jquery-1.11.0.min.js"></script>
 
 	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -33,7 +33,7 @@
 		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 	<![endif]-->
-	<link rel="shortcut icon" href="assets/images/favicon.png">
+	<link rel="shortcut icon" href="<?php echo base_url();?>assets/images/favicon.png">
 	
 </head>
 <body class="page-body login-page login-form-fall" data-url="http://neon.dev">
@@ -82,7 +82,10 @@ var baseurl = '<?php echo base_url();?>';
 				<p>Please enter correct email and password!</p>
 			</div>
 			
-			<form method="post" role="form" id="form_login">
+			<!-- <form method="post" role="form" id="form_login"> -->
+			<?php 
+				$attributes = array('method' => 'post', 'id' => 'form_login', 'role' => 'form');
+				echo form_open('',$attributes) ?>
 				
 				<div class="form-group">
 					
@@ -115,15 +118,15 @@ var baseurl = '<?php echo base_url();?>';
 					</button>
 				</div>
 				
-						
-			</form>
+			<?php echo form_close() ?> 		
+			<!-- </form> -->
 			
 			
-			<div class="login-bottom-links">
-				<a href="<?php echo base_url();?>index.php?login/forgot_password" class="link">
+			<!-- <div class="login-bottom-links">
+				<a href="<?php echo base_url();?>login/forgot_password" class="link">
 					<?php echo get_phrase('forgot_your_password');?> ?
 				</a>
-			</div>
+			</div> -->
 			
 		</div>
 		
@@ -133,16 +136,16 @@ var baseurl = '<?php echo base_url();?>';
 
 
 	<!-- Bottom Scripts -->
-	<script src="assets/js/gsap/main-gsap.js"></script>
-	<script src="assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-	<script src="assets/js/bootstrap.js"></script>
-	<script src="assets/js/joinable.js"></script>
-	<script src="assets/js/resizeable.js"></script>
-	<script src="assets/js/neon-api.js"></script>
-	<script src="assets/js/jquery.validate.min.js"></script>
-	<script src="assets/js/neon-login.js"></script>
-	<script src="assets/js/neon-custom.js"></script>
-	<script src="assets/js/neon-demo.js"></script>
+	<script src="<?php echo base_url();?>assets/js/gsap/main-gsap.js"></script>
+	<script src="<?php echo base_url();?>assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/bootstrap.js"></script>
+	<script src="<?php echo base_url();?>assets/js/joinable.js"></script>
+	<script src="<?php echo base_url();?>assets/js/resizeable.js"></script>
+	<script src="<?php echo base_url();?>assets/js/neon-api.js"></script>
+	<script src="<?php echo base_url();?>assets/js/jquery.validate.min.js"></script>
+	<script src="<?php echo base_url();?>assets/js/neon-login.js"></script>
+	<script src="<?php echo base_url();?>assets/js/neon-custom.js"></script>
+	<script src="<?php echo base_url();?>assets/js/neon-demo.js"></script>
 
 </body>
 </html>

@@ -4,7 +4,7 @@ $edit_data		=	$this->db->get_where('faq' , array('faq_id' => $param2) )->result_
 <div class="tab-pane box active" id="edit" style="padding: 5px">
     <div class="box-content">
         <?php foreach($edit_data as $row):?>
-        <?php echo form_open(base_url(). 'index.php?admin/faq/do_update/'.$row['faq_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+        <?php echo form_open(base_url(). 'admin/faq/do_update/'.$row['faq_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
             <div class="padded">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><?php echo get_phrase('question');?></label>
@@ -30,8 +30,8 @@ $edit_data		=	$this->db->get_where('faq' , array('faq_id' => $param2) )->result_
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('is_visible');?></label>
                                 <div class="col-sm-5">
                                     <select name="is_visible" class="form-control">
-                                        <option value="yes" <?php if($row['is_visible'] == 'yes')echo 'selected';?>><?php echo get_phrase('yes');?></option>
-                                        <option value="no" <?php if($row['is_visible'] == 'no')echo 'selected';?>><?php echo get_phrase('no');?></option>
+                                        <option value="1" <?php if($row['is_visible'] == '1')echo 'selected';?>><?php echo get_phrase('yes');?></option>
+                                        <option value="0" <?php if($row['is_visible'] == '0')echo 'selected';?>><?php echo get_phrase('no');?></option>
                                     </select>
                                 </div>
                             </div>

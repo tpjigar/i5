@@ -1,5 +1,5 @@
 
-            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_sub_category_add/');" 
+            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_sub_category_add/');" 
                 class="btn btn-primary pull-right">
                 <i class="entypo-plus-circled"></i>
                 <?php echo get_phrase('add_new_sub_category');?>
@@ -27,7 +27,7 @@
                             $category_name = $this->db->get_where('category', array('category_id' => $row['category_id']))->row(); 
                                 echo $category_name->category_name; ?></td>
                             <td><?php echo $row['sub_category_desc'];?></td>
-                            <td><?php echo $row['is_visible'];?></td>
+                            <td><?php if($row['is_visible'] == 1) echo "Yes"; else echo "No";?></td>
                             <td>
                                 
                                 <div class="btn-group">
@@ -38,7 +38,7 @@
                                         
                                         <!-- teacher EDITING LINK -->
                                         <li>
-                                            <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_sub_category_edit/<?php echo $row['sub_category_id'];?>');">
+                                            <a href="#" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_sub_category_edit/<?php echo $row['sub_category_id'];?>');">
                                                 <i class="entypo-pencil"></i>
                                                     <?php echo get_phrase('edit');?>
                                                 </a>
@@ -47,7 +47,7 @@
                                         
                                         <!-- teacher DELETION LINK -->
                                         <li>
-                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/sub_category/delete/<?php echo $row['sub_category_id'];?>');">
+                                            <a href="#" onclick="confirm_modal('<?php echo base_url();?>admin/sub_category/delete/<?php echo $row['sub_category_id'];?>');">
                                                 <i class="entypo-trash"></i>
                                                     <?php echo get_phrase('delete');?>
                                                 </a>

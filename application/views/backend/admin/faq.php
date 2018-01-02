@@ -32,7 +32,7 @@
                         <tr>
                             <td><?php echo $row['question'];?></td>
                             <td><?php echo $row['answer'];?></td>
-                            <td><?php echo $row['is_visible'];?></td>
+                            <td><?php if($row['is_visible'] == 1) echo "Yes"; else echo "No";?></td>
                             <td>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -42,7 +42,7 @@
                                     
                                     <!-- EDITING LINK -->
                                     <li>
-                                        <a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_edit_faq/<?php echo $row['faq_id'];?>');">
+                                        <a href="#" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_edit_faq/<?php echo $row['faq_id'];?>');">
                                             <i class="entypo-pencil"></i>
                                                 <?php echo get_phrase('edit');?>
                                             </a>
@@ -51,7 +51,7 @@
                                     
                                     <!-- DELETION LINK -->
                                     <li>
-                                        <a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/faq/delete/<?php echo $row['faq_id'];?>');">
+                                        <a href="#" onclick="confirm_modal('<?php echo base_url();?>admin/faq/delete/<?php echo $row['faq_id'];?>');">
                                             <i class="entypo-trash"></i>
                                                 <?php echo get_phrase('delete');?>
                                             </a>
@@ -70,7 +70,7 @@
             <!----CREATION FORM STARTS---->
             <div class="tab-pane box" id="add" style="padding: 5px">
                 <div class="box-content">
-                    <?php echo form_open(base_url() . 'index.php?admin/faq/create' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+                    <?php echo form_open(base_url() . 'admin/faq/create' , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('question');?></label>
                                 <div class="col-sm-5">
@@ -93,8 +93,8 @@
                                 <label class="col-sm-3 control-label"><?php echo get_phrase('is_visible');?></label>
                                 <div class="col-sm-5">
                                     <select class="form-control" name="is_visible">
-                                        <option value="yes"><?php echo get_phrase('yes');?></option>
-                                        <option value="no"><?php echo get_phrase('no');?></option>
+                                        <option value="1"><?php echo get_phrase('yes');?></option>
+                                        <option value="0"><?php echo get_phrase('no');?></option>
                                     </select>
                                    
                                 </div>

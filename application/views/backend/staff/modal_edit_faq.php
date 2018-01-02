@@ -4,7 +4,7 @@ $edit_data		=	$this->db->get_where('faq' , array('faq_id' => $param2) )->result_
 <div class="tab-pane box active" id="edit" style="padding: 5px">
     <div class="box-content">
         <?php foreach($edit_data as $row):?>
-        <?php echo form_open(base_url(). 'index.php?admin/faq/do_update/'.$row['faq_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
+        <?php echo form_open(base_url(). 'admin/faq/do_update/'.$row['faq_id'] , array('class' => 'form-horizontal form-groups-bordered validate','target'=>'_top'));?>
             <div class="padded">
                 <div class="form-group">
                     <label class="col-sm-3 control-label"><?php echo get_phrase('question');?></label>

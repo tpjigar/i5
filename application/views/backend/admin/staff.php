@@ -1,5 +1,5 @@
 
-            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_staff_add/');" 
+            <a href="javascript:;" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_staff_add/');" 
             	class="btn btn-primary pull-right">
                 <i class="entypo-plus-circled"></i>
             	<?php echo get_phrase('add_new_staff');?>
@@ -25,7 +25,7 @@
                             <td><?php echo $row['name'];?></td>
                             <td><?php echo $row['email'];?></td>
                             <td><?php echo $row['mobile'];?></td>
-                            <td><?php echo $row['is_active'];?></td>
+                            <td><?php  if($row['is_active'] ==1) echo "Yes"; else echo "No";?></td>
                             <td>
                                 
                                 <div class="btn-group">
@@ -36,7 +36,7 @@
                                         
                                         <!-- teacher EDITING LINK -->
                                         <li>
-                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>index.php?modal/popup/modal_staff_edit/<?php echo $row['staff_id'];?>');">
+                                        	<a href="#" onclick="showAjaxModal('<?php echo base_url();?>modal/popup/modal_staff_edit/<?php echo $row['staff_id'];?>');">
                                             	<i class="entypo-pencil"></i>
 													<?php echo get_phrase('edit');?>
                                                	</a>
@@ -45,7 +45,7 @@
                                         
                                         <!-- teacher DELETION LINK -->
                                         <li>
-                                        	<a href="#" onclick="confirm_modal('<?php echo base_url();?>index.php?admin/staff/delete/<?php echo $row['staff_id'];?>');">
+                                        	<a href="#" onclick="confirm_modal('<?php echo base_url();?>admin/staff/delete/<?php echo $row['staff_id'];?>');">
                                             	<i class="entypo-trash"></i>
 													<?php echo get_phrase('delete');?>
                                                	</a>
